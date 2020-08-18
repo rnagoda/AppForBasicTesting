@@ -1,4 +1,4 @@
-package com.nagodaqa.appforbasictesting_001;
+package com.nagodaqa.appforbasictesting;
 
 import org.junit.Test;
 
