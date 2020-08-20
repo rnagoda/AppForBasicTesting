@@ -6,10 +6,10 @@ from string_values import StringValues as s
 import random
 from pytest import mark
 
-desired_capabilities = {'automationName':'Appium',
-                        'platformName':'Android',
-                        'deviceName':'Android Emulator',
-                        'app':'C:\\projects\\AndroidApps\\AppForBasicTesting\\apks\\app.apk'}
+desired_capabilities = {'automationName': 'Appium',
+                        'platformName': 'Android',
+                        'deviceName': 'Android Emulator',
+                        'app': 'C:\\projects\\AndroidApps\\AppForBasicTesting\\apks\\app.apk'}
 
 driver = webdriver.Remote("http://localhost:4723/wd/hub", desired_capabilities)
 
@@ -36,6 +36,7 @@ increment_button = assign_element(s.INCREMENT_BUTTON)
 decrement_button = assign_element(s.DECREMENT_BUTTON)
 reset_button = assign_element(s.RESET_BUTTON)
 display_value_field = assign_element(s.DISPLAY_VALUE_TEXT_FIELD)
+
 
 @mark.smoke
 class TestButtonsExist:
@@ -87,7 +88,7 @@ class TestButtonsWork:
 
     def test_can_meet_random_display_value(self):
         original_display_value = convert_display_value(display_value_field.text)
-        desired_display_value = random.randint(1,9)
+        desired_display_value = random.randint(1, 9)
         conversion_needed = desired_display_value - original_display_value
 
         if conversion_needed == 0:
@@ -128,7 +129,6 @@ class TestButtonsWork:
         
 
 class TestWarningText:
-
     def test_maximum_increment_value_warning(self):
 
         original_display_value = convert_display_value(display_value_field.text)
@@ -158,6 +158,3 @@ class TestWarningText:
         warning_text = get_element_text(s.WARNING_TEXT_FIELD)
 
         assert warning_text == s.WARNING_TEXT_MIN_VALUE
-
-
-
